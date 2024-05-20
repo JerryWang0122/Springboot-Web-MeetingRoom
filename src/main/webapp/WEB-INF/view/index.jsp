@@ -33,9 +33,9 @@
                             會議室：
                                 <sp:select path="roomId" items="${ rooms }" itemValue="roomId" itemLabel="roomName" /><p>
                             預約人：
-                                <sp:input path="userId" type="number"/> <p>
+                                <sp:select path="userId" items="${ users }" itemValue="id" itemLabel="name"/> <p>
                             預約日：
-                                <sp:input path="bookingDate" type="date" />
+                                <sp:input path="bookingDate" type="date" /><p>
                             <button type="submit" class="pure-button pure-button-primary">傳送</button>
                         </fieldset>
                     </sp:form>
