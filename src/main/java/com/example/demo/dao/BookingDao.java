@@ -4,7 +4,7 @@ import com.example.demo.model.po.BookingMeetingRoom;
 
 import java.util.List;
 
-public interface BookingDao {
+public interface BookingDao extends RoomDao, UserDao {
 
     // 預定會議室
     Integer addBooking(BookingMeetingRoom bookingMeetingRoom);
