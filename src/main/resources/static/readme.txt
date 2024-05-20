@@ -25,7 +25,6 @@
  * 路徑：/booking/bookRoom
  * 參數：會議室ID (roomId), 使用者ID (userId), 預訂日期 (date)
  * 返回：預訂成功(會得到預約號碼 bookingId)或失敗的消息
- * 透過AOP: 預訂會議室:會議室ID (roomId), 使用者名稱 (name), 預訂日期 (date)
  * -----------------------------------------------------------------------------------------------
  * 範例：http://localhost:8082/booking/bookRoom?roomId=101&userId=1&date=2023-12-04
  *
@@ -34,7 +33,6 @@
  * 路徑：/booking/cancelBooking/{bookingId}
  * 參數：預訂ID (bookingId)
  * 返回：取消成功或失敗的消息
- * 透過AOP: 取消預訂:預約 bookingId
  * -----------------------------------------------------------------------------------------------
  * 範例：http://localhost:8082/booking/cancelBooking/1
  *
