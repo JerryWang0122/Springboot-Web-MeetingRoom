@@ -14,7 +14,7 @@ public interface BookingDao extends RoomDao {
     Integer cancelBooking(Integer bookingId);
 
     // 查看所有預定
-    List<BookingMeetingRoomDto> findAllBookingRooms();
+    List<BookingMeetingRoomDto> findAllBookings();
 
     // 修改預約人
     Integer updateBookingUserId(Integer bookingId, Integer userId);

@@ -39,7 +39,7 @@ public class BookingDaoImpl implements BookingDao{
     }
 
     @Override
-    public List<BookingMeetingRoomDto> findAllBookingRooms() {
+    public List<BookingMeetingRoomDto> findAllBookings() {
         String sql = "SELECT " +
                 "b.bookingId, b.roomId, b.userId, b.bookingDate, b.createDate, " +
                 "r.roomId, r.roomName, r.roomSize, " +
