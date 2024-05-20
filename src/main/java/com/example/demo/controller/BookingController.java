@@ -53,7 +53,13 @@ public class BookingController {
             String message = "新增 " + (rowcount == 1 ? "success" : "fail");
             model.addAttribute("message", message);
         } catch (Exception e) {
-            String message = "新增錯誤：" + e.getMessage();
+            String message = "新增錯誤：";
+            // unique_roomId_and_bookingDate 是在建立資料表時的表單約束條件
+            if (e.getMessage().contains("unique_roomId_and_bookingDate")) {
+                message += "該會議室當日已經有人預約";
+            } else {
+                message += e.getMessage();
+            }
             model.addAttribute("message", message);
         }
         return "result";
