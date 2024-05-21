@@ -1,4 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" isErrorPage="true" %>
 <!DOCTYPE html>
 <%-- Tomcat 10.x JSTL --%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
@@ -38,7 +38,7 @@
                             預約人：
                                 <sp:select path="userId" items="${ users }" itemValue="id" itemLabel="name"/> <p>
                             預約日：
-                                <sp:input path="bookingDate" type="date" /><p>
+                                <sp:input path="bookingDate" type="date" required="required"/><p>
                             <button type="submit" class="pure-button pure-button-primary">傳送</button>
                         </fieldset>
                     </sp:form>
@@ -50,7 +50,16 @@
             </tr>
             <tr>
                 <!-- 取消預約 -->
-                <td valign="top"></td>
+                <td valign="top">
+                    <form action="/booking" method="post" class="pure-form" target="resultFrame">
+                        <fieldset>
+                            <legend>取消預約</legend>
+                            預約Id：<input type="number" name="bookingId" id="bookingId" required></p>
+                            <input type="hidden" id="_method" name="_method" value="DELETE">
+                            <button type="submit" class="pure-button pure-button-primary">送出</button>
+                        </fieldset>
+                    </form>
+                </td>
             </tr>
             <tr>
                 <!-- 查詢預約 -->

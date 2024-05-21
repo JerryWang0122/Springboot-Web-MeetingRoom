@@ -9,10 +9,7 @@ import com.example.demo.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -62,6 +59,14 @@ public class BookingController {
             }
             model.addAttribute("message", message);
         }
+        return "result";
+    }
+
+    @DeleteMapping
+    public String cancel(@RequestParam("bookingId") Integer bookingId, Model model) {
+        int rowcount = bookingService.cancelBooking(bookingId);
+        String message = "取消 " + (rowcount == 1 ? "success" : "fail");
+        model.addAttribute("message", message);
         return "result";
     }
 }
