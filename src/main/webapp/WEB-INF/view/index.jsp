@@ -42,15 +42,8 @@
                             <button type="submit" class="pure-button pure-button-primary">傳送</button>
                         </fieldset>
                     </sp:form>
-                </td>
-                <!-- 回應結果 -->
-                <td rowspan="4" valign="top">
-                    <iframe name="resultFrame" style="border: 0px" width="1200px" height="1000px"></iframe>
-                </td>
-            </tr>
-            <tr>
-                <!-- 取消預約 -->
-                <td valign="top">
+
+                    <!-- 取消預約 -->
                     <form action="/booking" method="post" class="pure-form" target="resultFrame">
                         <fieldset>
                             <legend>取消預約</legend>
@@ -59,15 +52,14 @@
                             <button type="submit" class="pure-button pure-button-primary">送出</button>
                         </fieldset>
                     </form>
+
+                    <!-- 查詢預約 -->
+                    <!-- 新增會議室 -->
                 </td>
-            </tr>
-            <tr>
-                <!-- 查詢預約 -->
-                <td valign="top"></td>
-            </tr>
-            <tr>
-                <!-- 新增會議室 -->
-                <td valign="top"></td>
+                <!-- 回應結果 -->
+                <td valign="top">
+                    <iframe name="resultFrame" style="border: 0px" width="1200px" height="1000px"></iframe>
+                </td>
             </tr>
         </table>
     </body>
