@@ -25,7 +25,6 @@
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" />
     </head>
     <body style="padding: 15px">
-        <%=application.getServerInfo()%>
         <table>
             <tr>
                 <!-- 預約表單 -->
@@ -54,6 +53,14 @@
                     </form>
 
                     <!-- 查詢預約 -->
+                    <form action="/booking/findAll" method="get" class="pure-form" target="resultFrame">
+                        <fieldset>
+                            <legend>查詢預約</legend>
+
+                            <button type="submit" class="pure-button pure-button-primary">查詢</button>
+                        </fieldset>
+                    </form>
+
                     <!-- 新增會議室 -->
                 </td>
                 <!-- 回應結果 -->
@@ -63,4 +70,7 @@
             </tr>
         </table>
     </body>
+    <footer>
+        <%=application.getServerInfo()%>
+    </footer>
 </html>

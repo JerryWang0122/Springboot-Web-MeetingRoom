@@ -69,4 +69,11 @@ public class BookingController {
         model.addAttribute("message", message);
         return "result";
     }
+
+    @GetMapping("/findAll")
+    public String findAll(Model model) {
+        List<BookingMeetingRoomDto> bookingDtos = bookingService.findAllBookings();
+        model.addAttribute("bookingDtos", bookingDtos);
+        return "list_booking";
+    }
 }
