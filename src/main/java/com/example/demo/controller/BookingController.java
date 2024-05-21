@@ -29,7 +29,9 @@ public class BookingController {
     private UserService userService;
 
     @GetMapping
-    public String index(@ModelAttribute BookingMeetingRoom bookingMeetingRoom, Model model) {
+    public String index(@ModelAttribute BookingMeetingRoom bookingMeetingRoom,
+                        @ModelAttribute MeetingRoom meetingRoom,
+                        Model model) {
         List<BookingMeetingRoomDto> bookingDtos = bookingService.findAllBookings();
         List<MeetingRoom> rooms = bookingService.findAllRooms();
         List<User> users = userService.findAllUsers();
@@ -40,6 +42,24 @@ public class BookingController {
         return "index";
     }
 
+    @PostMapping("/room")
+    public String addRoom(@ModelAttribute MeetingRoom meetingRoom, Model model) {
+        try {
+            Integer rowcount = bookingService.addRoom(meetingRoom.getRoomId(), meetingRoom.getRoomName(), meetingRoom.getRoomSize());
+            String message = "新增會議室 " + (rowcount == 1 ? "success" : "fail");
+            model.addAttribute("message", message);
+        } catch (Exception e) {
+            String message = "新增會議室錯誤：";
+            if (e.getMessage().contains("Duplicate")) {
+                message += "該會議室ID已重複";
+            } else {
+                message += e.getMessage();
+            }
+            model.addAttribute("message", message);
+        }
+        return "result";
+    }
+
     @PostMapping
     public String add(@ModelAttribute BookingMeetingRoom bookingMeetingRoom, Model model) {
 
@@ -47,10 +67,10 @@ public class BookingController {
             Integer rowcount = bookingService.addBooking(bookingMeetingRoom.getRoomId(),
                                       bookingMeetingRoom.getUserId(),
                                       bookingMeetingRoom.getBookingDate());
-            String message = "新增 " + (rowcount == 1 ? "success" : "fail");
+            String message = "新增預約 " + (rowcount == 1 ? "success" : "fail");
             model.addAttribute("message", message);
         } catch (Exception e) {
-            String message = "新增錯誤：";
+            String message = "新增預約錯誤：";
             // unique_roomId_and_bookingDate 是在建立資料表時的表單約束條件
             if (e.getMessage().contains("unique_roomId_and_bookingDate")) {
                 message += "該會議室當日已經有人預約";
