@@ -8,6 +8,7 @@
         <meta charset="UTF-8">
         <title>List Booking</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css" />
+        <script type="text/javascript" src="/js/booking.js"></script>
     </head>
     <body >
         <%-- bookingId=1, roomId=101, userId=1, bookingDate=2024-05-20, createDate=2024-05-20 12:03:01.0,
@@ -36,7 +37,14 @@
                                 <td>${ booking.bookingId }</td>
                                 <td>${ booking.roomId }</td>
                                 <td>${ booking.userId }</td>
-                                <td>${ booking.bookingDate }</td>
+                                <td>
+                                    <span class="date-text" data-booking-id="${ booking.bookingId }">
+                                        ${ booking.bookingDate }
+                                    </span>
+                                    <input class="date-input" type="date"
+                                           data-booking-id="${ booking.bookingId }"
+                                           value="${ booking.bookingDate }" style="display: none;">
+                                </td>
                                 <td>${ booking.createDate }</td>
                                 <td>${ booking.meetingRoom.roomName }</td>
                                 <td>${ booking.meetingRoom.roomSize }</td>
